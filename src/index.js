@@ -51,7 +51,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3005",
+    origin: "https://membership-management-backend.onrender.com/",
     credentials: true,
   },
 });
@@ -60,7 +60,7 @@ app.set("io", io); // using set method to mount the `io` instance on the app to 
 
 app.use(
   cors({
-    origin:"http://localhost:3005",
+    origin:"https://membership-management-backend.onrender.com/",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
