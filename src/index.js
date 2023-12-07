@@ -51,7 +51,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://membership-management.netlify.app/",
+    origin: "https://membership-management.netlify.app",
     credentials: true,
   },
 });
@@ -60,7 +60,7 @@ app.set("io", io); // using set method to mount the `io` instance on the app to 
 
 app.use(
   cors({
-    origin:"https://membership-management.netlify.app/",
+    origin:"https://membership-management.netlify.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
@@ -71,25 +71,12 @@ app.use(
   session({
     secret: process.env.EXPRESS_SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
     proxy: true, // trust reverse proxy of netlify
+    saveUninitialized: false,
     cookie: {maxAge: 60 * 60 * 1000, secure: true, sameSite:'none' }, // 1 hour, secure for https & sameSite for deployment of backend & frontend on different places
-    // cookie: {maxAge: 60 * 60 * 1000, secure: true }, // 1 hour, secure for https & sameSite for deployment of backend & frontend on different places
     store: new MongoStore({ mongooseConnection: mongoose.connection }), // storing sessions in mongodb
   })
-  )
-// express-sessions (admin session)
-
-
-// app.use(
-//   session({
-//     secret: 'cOmPleXsecREtkEy',
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {maxAge: 60 * 60 * 1000 }, // 1 hour 
-//     store: new MongoStore({ mongooseConnection: mongoose.connection }),
-//   })
-// )
+)
 
 
 // this will not break session if user performs some activity within 1 hour
