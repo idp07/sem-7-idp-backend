@@ -38,7 +38,7 @@ const fileUpload = require("express-fileupload")
 require('./config/passport')(passport)
 
 // app port and host
-const hostname = "127.0.0.1";
+const hostname = "0.0.0.0";
 const port = process.env.PORT || 3001;
 
 // trust netlify reverse proxy
