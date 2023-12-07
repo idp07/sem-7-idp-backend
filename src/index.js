@@ -51,7 +51,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://membership-management-backend.onrender.com/",
+    origin: "https://membership-management.netlify.app/",
     credentials: true,
   },
 });
@@ -60,7 +60,7 @@ app.set("io", io); // using set method to mount the `io` instance on the app to 
 
 app.use(
   cors({
-    origin:"https://membership-management-backend.onrender.com/",
+    origin:"https://membership-management.netlify.app/",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
