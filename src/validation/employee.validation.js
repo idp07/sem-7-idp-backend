@@ -28,7 +28,6 @@ const createEmployeeValidationSchema = Joi.object({
     name,
     email,
     phone,
-    department,
     designation,
     typeOfUser
 });
