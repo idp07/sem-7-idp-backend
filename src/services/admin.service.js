@@ -25,7 +25,7 @@ const showAdminInfo = async (user) => {
 const createUser = async (body) => {
     try{
         // destruct user data from body of the request
-        const { email, name, phone, department, designation, typeOfUser } = body;
+        const { email, name, phone, designation, typeOfUser } = body;
 
         // joi input validation
         const { error } =  employeeValidation.createEmployeeValidationSchema.validate({ ...body })
@@ -40,7 +40,6 @@ const createUser = async (body) => {
             email: email.toLowerCase(),
             name,
             phone,
-            department,
             designation,
             typeOfUser
         };
